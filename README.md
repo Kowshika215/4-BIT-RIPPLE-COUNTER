@@ -24,17 +24,84 @@ In timing diagram Q0 is changing as soon as the negative edge of clock pulse is 
 
 **Procedure**
 
-/* write all the steps invloved */
+1. Type the program in Quartus software.
+
+2. Compile and run the program.
+
+3. Generate the RTL schematic and save the logic diagram.
+
+4. Create nodes for inputs and outputs to generate the timing diagram.
+
+5. For different input combinations generate the timing diagram.
+
 
 **PROGRAM**
 
-/* Program for 4 Bit Ripple Counter and verify its truth table in quartus using Verilog programming.
+module ripple (
 
- Developed by: RegisterNumber:
-*/
+    input clk,
+    
+    input reset,
+    
+    output [3:0] q 
+    
+);
+    
+    reg [3:0] q_int;
+    
+    assign q = q_int;
+
+    always @(posedge clk or posedge reset) begin
+    
+        if (reset) 
+        
+            q_int[0] <= 1'b0; 
+            
+        else 
+        
+            q_int[0] <= ~q_int[0]; 
+            
+    end
+    
+    genvar i;
+    
+    generate
+    
+        for (i = 1; i < 4; i = i + 1) begin : ripple
+        
+            always @(posedge q_int[i-1] or posedge reset) begin
+            
+                if (reset)
+                
+                    q_int[i] <= 1'b0; // Reset the bit to 0
+                    
+                else 
+                
+                    q_int[i] <= ~q_int[i]; // Toggle the bit on clock edge of previous stage
+                    
+            end
+            
+        end
+        
+    endgenerate
+    
+endmodule
+
+ Developed by: Kowshika.R
+ 
+ RegisterNumber: 24001226
+
 
 **RTL LOGIC FOR 4 Bit Ripple Counter**
 
+![Screenshot 2024-12-20 021310](https://github.com/user-attachments/assets/3d4ccc1f-686f-4604-b9bb-394ecb49be9a)
+
+
 **TIMING DIGRAMS FOR 4 Bit Ripple Counter**
 
+![Screenshot 2024-12-20 021241](https://github.com/user-attachments/assets/9f33e3b2-a790-4078-9fc0-d2dc05641144)
+
+
 **RESULTS**
+
+Thus,to implement  4 Bit Ripple Counter using verilog and validating their functionality using their functional tables is verified.
