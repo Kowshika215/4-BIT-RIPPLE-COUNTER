@@ -37,7 +37,7 @@ In timing diagram Q0 is changing as soon as the negative edge of clock pulse is 
 
 **PROGRAM**
 
-module ripple (
+module ex12(
 
     input clk,
     
