@@ -1,4 +1,4 @@
-# 4-BIT-RIPPLE-COUNTER
+![image](https://github.com/user-attachments/assets/9bc3aa65-b041-413d-9c7f-c81db4acc7e4)# 4-BIT-RIPPLE-COUNTER
 
 **AIM:**
 
@@ -37,18 +37,18 @@ In timing diagram Q0 is changing as soon as the negative edge of clock pulse is 
 
 **PROGRAM**
 
-module ex12(
+module ex12 (
 
-    input clk,
+    input clk,     
     
-    input reset,
+    input reset,   
     
     output [3:0] q 
     
 );
-    
+
     reg [3:0] q_int;
-    
+
     assign q = q_int;
 
     always @(posedge clk or posedge reset) begin
@@ -62,7 +62,7 @@ module ex12(
             q_int[0] <= ~q_int[0]; 
             
     end
-    
+
     genvar i;
     
     generate
@@ -71,13 +71,13 @@ module ex12(
         
             always @(posedge q_int[i-1] or posedge reset) begin
             
-                if (reset)
+                if (reset) 
                 
                     q_int[i] <= 1'b0; // Reset the bit to 0
                     
                 else 
                 
-                    q_int[i] <= ~q_int[i]; // Toggle the bit on clock edge of previous stage
+                    q_int[i] <= ~q_int[i]; 
                     
             end
             
@@ -87,19 +87,21 @@ module ex12(
     
 endmodule
 
- Developed by: Kowshika.R
+Developed by: Kowshika.R
  
- RegisterNumber: 24001226
+RegisterNumber: 24001226
 
 
 **RTL LOGIC FOR 4 Bit Ripple Counter**
 
-![Screenshot 2024-12-20 021310](https://github.com/user-attachments/assets/3d4ccc1f-686f-4604-b9bb-394ecb49be9a)
+![Screenshot 2025-01-02 031459](https://github.com/user-attachments/assets/2eb0b842-32e4-49a1-813a-12e594876732)
+
 
 
 **TIMING DIGRAMS FOR 4 Bit Ripple Counter**
 
-![WhatsApp Image 2024-12-31 at 13 53 34_efdf1065](https://github.com/user-attachments/assets/fe2eaba8-4fc4-432c-8be5-4e38f6ab7dba)
+![Screenshot 2025-01-02 031706](https://github.com/user-attachments/assets/e38e3598-886b-452a-b922-bd7753e09eee)
+
 
 
 
